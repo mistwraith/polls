@@ -67,3 +67,8 @@ ul{
 	margin-left:auto;
 	margin-right:auto;
 }
+#footer{
+bottom:0;
+position:fixed;
+margin-left:0;
+}
