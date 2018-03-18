@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css"/>
+    <title>Poll</title>
+  </head>
+  <body>
+  	<div id="app">
+  		<h1>Help solve the mysteries of society!</h1>  		
+  		<p>Submit your own poll here:</p>
+  		<form v-on:submit.prevent="addPoll">
+			<input id="input" type="text" size="50" v-model="text">
+			<button id="submitButton" type="submit">Submit</button>
+      	</form>
+      	<br><br>
+      	<h2>Share your thoughts on the following topics, and see how other people feel:</h2>
+      	<hr>
+      	<ul>
+      		<li v-for="poll in returnPolls">
+      			<h2 id = "question">{{ poll.text }}</h2>
+      			<div id="buttonsDiv"><span><div id="buttons" v-on:click="addYes(poll)"><p>Yes</p></div><div id="buttons" v-on:click="addNo(poll)"><p>No</p></div></span></div>
+      			<p>Total responses: {{poll.totalResponses}}</p>
+      			<p>{{poll.percentAgree}}% of people agree with this statement.</p>
+      			<hr>
+      		</li>
+      	</ul>
+  	</div>
+  	
+  	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+  </body>
